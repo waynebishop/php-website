@@ -1,13 +1,11 @@
 <?php
 
-class LandingController {
+class LandingController extends PageController {
 
 	// Properties (attributes)
 	private $emailMessage;
 	private $passwordMessage;
-	private $dbc;
-
-
+	
 	// Constructor
 	public function __construct($dbc) {
 
@@ -119,7 +117,7 @@ class LandingController {
 
 			// Log the user in
 			$_SESSION['id'] = $this->dbc->insert_id;
-			
+
 			// Redirect the user to their stream page
 
 			header('Location: index.php?page=stream');

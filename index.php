@@ -5,6 +5,7 @@ session_start();
 // Make everything in the vendor folder 
 // avaiable to use
 require 'vendor/autoload.php';
+require'app/controllers/PageController.php';
 
 // Has the user requested a page?
 // if( isset( $_GET['page'] ) ) {
@@ -50,7 +51,8 @@ switch($page) {
 
 	// Home page
 	case 'stream':
-		
+		require 'app/controllers/StreamController.php';
+		$controller = new StreamController($dbc);
 
 	break;
 
