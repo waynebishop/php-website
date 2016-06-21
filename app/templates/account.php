@@ -10,4 +10,22 @@
 
 <h1>Account<h1>
 
+<h2>Update your contact details</h2>
+
+<form action="index.php?page=account" method="post">
+	<label for="">First Name: </label>
+	<input type="text" name="first-name" value="<?= isset($_POST['update-contact']) ? $_POST['first-name'] : '' ?>">
+	
+	<?= isset($firstNameMessage) ? $firstNameMessage : '' ?>
+
+	<label for="">Last Name: </label>
+	<input type="text" name="last-name" value="<?= isset($_POST['update-contact']) ? $_POST['last-name'] : '' ?>">
+
+	<?= isset($lastNameMessage) ? $lastNameMessage : '' ?>
+
+	<input type="Submit" class="button" name="update-contact"	value="Update your name">
+
+</form>
+
+
 

@@ -5,7 +5,8 @@ abstract class PageController {
 	protected $title;
 	protected $metaDesc;
 	protected $dbc;
-	protected $plates;	
+	protected $plates;
+	protected $data = [];	
 
 	public function __construct() {
 
