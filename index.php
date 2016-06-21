@@ -49,12 +49,19 @@ switch($page) {
 
 	break;
 
-	// Home page
+	// Stream page
 	case 'stream':
 		require 'app/controllers/StreamController.php';
 		$controller = new StreamController($dbc);
 
 	break;
+
+	// Account page *********
+	case 'account':
+		require 'app/controllers/AccountController.php';
+		$controller = new AccountController($dbc);
+	break;	
+
 
 	default:
 		echo $plates->render('error404');
