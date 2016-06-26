@@ -2,10 +2,6 @@
 
 class AccountController extends PageController {
 
-	private $firstNameMessage;
-	private $lastNameMessage;
-	private $emailMessage;
-
 	public function __construct($dbc) {
 		parent::__construct();
 
@@ -16,7 +12,6 @@ class AccountController extends PageController {
 		// Did the user submit new contact details
 		if( isset( $_POST['update-contact'] ) ) {
 			$this->processNewContactDetails();
-
 
 		} 
 
@@ -49,10 +44,21 @@ class AccountController extends PageController {
 		if( $totalErrors == 0) {
 			// Form validation passed!
 			// Time to update the database
-			die('update');
+			$firstName = $this->dbc->real_escape_string($_POST['first-name']);
+			$lastName = $this->dbc->real_escape_string($_POST['last-name']);
+
+			$userID = $_SESSION['id'];
+
+			// Prepare the SQL
+			$sql = "UPDATE users
+					SET first_name = '$firstName',
+						last_name = '$lastName'
+					WHERE id = $userID ";
+
+			// Run the query
+			$this->dbc->query( $sql );	
+
 		}
-
-
 
 	}
 
