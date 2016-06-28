@@ -40,7 +40,6 @@ switch($page) {
 	// Contact page
 	case 'contact':
 		echo $plates->render('contact');
-
 	break;
 
 	// Home page
@@ -53,7 +52,6 @@ switch($page) {
 	case 'stream':
 		require 'app/controllers/StreamController.php';
 		$controller = new StreamController($dbc);
-
 	break;
 
 	// Account page *********
@@ -62,6 +60,7 @@ switch($page) {
 		$controller = new AccountController($dbc);
 	break;
 
+	// Post page
 	case 'post':
 		require 'app/controllers/PostController.php';
 		$controller = new PostController($dbc);
