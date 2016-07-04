@@ -2,6 +2,8 @@
 
 class AccountController extends PageController {
 
+	use Intervention\Image\ImageManager;
+
 	public function __construct($dbc) {
 		parent::__construct();
 
@@ -74,6 +76,11 @@ class AccountController extends PageController {
 
 		$title = trim($_POST['title']);
 		$desc = trim($_POST['desc']);
+
+		$manager = new ImageManager(array('driver' => 'imagick'));
+		$image = $manager->make( $_FILES['image'][0]['tmp_name'] )->resize(300, 200);
+
+		$image->save('img/test.jpg');		
 
 		// Title
 		if( strlen( $title ) == 0) {
