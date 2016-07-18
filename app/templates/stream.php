@@ -52,7 +52,8 @@
         <a href="" class="button secondary heart"><i class="fa fa-heart" aria-hidden="true"></i></a>
         
         <h1>
-          <a href="index.php?page=post&postid=<?= $item['id'] ?>"><?= $item['title'] ?>
+          <a href="index.php?page=post&postid=<?= $item['id'] ?>">
+          <?= htmlentities($item['title']) ?>
           </a>  
         </h1>
         

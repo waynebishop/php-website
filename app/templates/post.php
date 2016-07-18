@@ -9,16 +9,16 @@
 
 <body>
 
-<h1><?= $post['title'] ?></h1>
+<h1><?= htmlentities($post['title']) ?></h1>
 
-<p><?= $post['description'] ?></p>
+<p><?= htmlentities($post['description']) ?></p>
 
 <img src="img/uploads/original/<?= $post['image'] ?>" alt="">
 
 <ul>
 	<li>Post created: <?= $post['created_at'] ?></li>
 	<li>Post updated: <?= $post['updated_at'] ?></li>
-	<li>Posted by: <?= $post['first_name'].' '.$post['last_name'] ?> </li>
+	<li>Posted by: <?= htmlentities($post['first_name'].' '.$post['last_name']) ?> </li>
 </ul>
 
 <section>
@@ -50,8 +50,8 @@
 				if( $_SESSION['id'] == $comment['user_id'] ) {
 
 					// Yes! This user owns the comemnts
-					echo 'Delete ';
-					echo 'Edit';
+					echo '<a href="">Delete</a> ';
+					echo '<a href="index.php?page=edit-comment&id='.$comment['id'].'">Edit</a>';
 
 				}
 
