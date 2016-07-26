@@ -1,6 +1,6 @@
 <?php
 
-use Intervention\Image\ImageManager;
+use Intervention\Image\ImageManager;  
 
 class AccountController extends PageController {
 

@@ -23,5 +23,6 @@
 	<input type="file" name="image">
 
 	<input type="submit" name="edit-post">
+	<?= isset($upateMessage) ? $updateMessage : '' ?>		
 
 </form>

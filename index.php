@@ -77,8 +77,9 @@ switch($page) {
 	break;
 
 
-	default:
-		echo $plates->render('error404');
+	default: // This is incomplete as we need a Error404.php template!
+		require 'app/controllers/Error404Controller.php';
+		$controller = new Error404Controller();
 	break;
 
 }
