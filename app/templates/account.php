@@ -8,6 +8,8 @@
 
 <body>
 
+ <?= $this->insert('nav') ?>
+
 <h1>Account<h1>
 
 <h2>Update your contact details</h2>

@@ -51,6 +51,10 @@ class EditPostController extends pageController {
 				WHERE id = $postID
 				AND user_id = $userID";
 
+		if( $_SESSION['privilege'] !='admin' ) {
+			$sql .= " AND uder_id = $userID";
+		}		
+
 		// Run the query
 		$result = $this->dbc->query($sql);
 
@@ -180,8 +184,15 @@ class EditPostController extends pageController {
 			SET title = '$title',
 				description = '$desc',
 				image = '$imageName'
-			WHERE id = 	$postID
-			AND user_id = $userID";
+			WHERE id = 	$postID";
+
+		if($_SESSION['privilege'] != 'admin') {
+			$sql .= " AND user_id = $userID";
+		}	
+			
+
+
+
 
 		$this->dbc->query($sql);
 

@@ -12,6 +12,12 @@ class PostController extends PageController {
 
 		$this->dbc = $dbc;
 
+		// Does the user want to delete htis post
+		if( isset($_GET['delete']) ) {
+			$this->deletePost();
+		}
+
+
 		// Did the user add a comment?
 		if( isset($_POST['new-comment']) ) {
 			$this->processNewComment();
@@ -104,6 +110,61 @@ class PostController extends PageController {
 
 
 		}
+
+	}
+
+	private function deletePost() {
+
+		// If user is not logged in?
+		if ( !isset($_SESSION['id']) ) {
+			return;
+		}
+
+		// make sure user owns this post
+		$postID = $this->dbc->real_escape_string($_GET['postid']);
+		$userID = $_SESSION['id'];
+		$privilege = $_SESSION['privilege'];
+
+		// Delete the image first
+
+		$sql = "SELECT image
+				FROM posts
+				WHERE id = $postID ";
+
+		// If the user is not an admin
+		if( $privilege != 'admin') {
+			$sql .= " AND user_id - $userID";
+		}		
+
+
+		// Run this query
+		$result = $this->dbc->query($sql);
+
+		// If the query failed
+		//Either the post doesn't exist, or you don't own the post
+		if( !$result || $result->num_rows == 0) {
+			return;
+		}				
+
+		$result = $result->fetch_assoc();
+
+		$filename = $result['image'];
+
+		unlink("img/uploads/original/$filename");
+		unlink("img/uploads/stream/$filename");
+
+
+		// Prepare the SQL
+		$sql = "DELETE FROM posts
+				WHERE id = $postID ";
+
+		// Run the query
+		$this->dbc->query($sql);
+		
+		// Send user back to stream
+		// This post is dead :(
+		header('Location: index.php?page=stream');
+		die();		
 
 	}	
 

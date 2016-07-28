@@ -8,6 +8,8 @@
 
 <body id="stream-page">
 
+  <?= $this->insert('nav') ?>
+
   <nav class="row expanded">
     <div class="columns large-10">
       <form action="" method="">

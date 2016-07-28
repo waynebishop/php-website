@@ -76,6 +76,13 @@ switch($page) {
 		$controller = new EditPostController($dbc);
 	break;
 
+	case 'logout':
+		unset($_SESSION['id']);
+		unset($_SESSION['privilege']);
+		header('Location: index.php'); 
+
+
+	break;
 
 	default: // This is incomplete as we need a Error404.php template!
 		require 'app/controllers/Error404Controller.php';
@@ -83,7 +90,6 @@ switch($page) {
 	break;
 
 }
-
 
 $controller->buildHTML();
 
