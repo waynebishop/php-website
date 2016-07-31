@@ -12,7 +12,7 @@
 
   <nav class="row expanded">
     <div class="columns large-10">
-      <form action="" method="">
+      <form action="index.php?page=search" method="post">
         <div class="input-group">
           <a href="" class="input-group-label">Test</a>
           <input type="search" name="search" placeholder="Search" class="input-group-field">
