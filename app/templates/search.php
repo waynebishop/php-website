@@ -18,6 +18,8 @@
 		<?php foreach($searchResults as $Result): ?>
 			<h3><?= $Result['score_title'] ?> </h3>	
 			<p><?= $Result['score_description'] ?> </p>
+			<a href="index.php?page=post&postid=<?= $Result['id'] ?>">View post ID# <?= $Result['id'] ?></a>
+
 			<hr>
 		<?php endforeach; ?>	
 	<?php else: ?>
